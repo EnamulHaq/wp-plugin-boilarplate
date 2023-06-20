@@ -55,8 +55,14 @@ class Vue_Admin_Boilarplate_Admin {
         add_action('admin_enqueue_scripts', [$this, 'loadAssets']);
         add_filter('script_loader_tag', [$this, 'loadScriptAsModule'], 10, 3);
 
-	}
+        add_action( 'admin_init', [$this, 'crunchify_remove_plugin_stylesheet'], 100 );
 
+	}
+    public function crunchify_remove_plugin_stylesheet() {
+        if(isset($_GET['page']) && $_GET['page'] === 'wp-va-boilerplate') {
+//            wp_deregister_style('wp-admin');
+        }
+    }
 	/**
 	 * Register the stylesheets for the admin area.
 	 *

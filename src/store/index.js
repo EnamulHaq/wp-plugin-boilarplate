@@ -16,3 +16,17 @@
 //         },
 //     },
 // })
+
+import {defineStore} from "pinia";
+
+export const useGlobalStore = defineStore({
+    id: 'globalStore',
+    state: () => ({
+        sidebarCollapse: false,
+    }),
+    actions: {
+        collapsedSidebar() {
+            this.sidebarCollapse = !this.sidebarCollapse
+        }
+    }
+})
